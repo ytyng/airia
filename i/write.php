@@ -11,6 +11,7 @@ if(!isset($_POST['mode']))      $_POST['mode'] = "";
 if(!isset($_POST['file']))      $_POST['file'] = "";
 if(!isset($_POST['group']))     $_POST['group'] = "";
 if(!isset($_POST['contents']))  $_POST['contents'] = "";
+if(!isset($_POST['position']))  $_POST['position'] = "";
 
 $resultJs = "";
 
@@ -38,6 +39,37 @@ case "save":
 	
 	break;
 	
+case "save-part":
+	//追記保存
+		
+	$airia->setGroup($airia->httpInputConvertEncoding($_GET['group']));
+	$airia->readFile($airia->httpInputConvertEncoding($_GET['file']));
+	$contents = $airia->getFileContents();
+		
+	if($_POST['position']=="head"){
+		$contents = $airia->httpInputConvertEncoding($_POST['contents']) . "\n" . $contents;
+	}else{
+		$contents = $contents . "\n" . $airia->httpInputConvertEncoding($_POST['contents']);
+	}
+	$airia->saveFile(
+		$airia->httpInputConvertEncoding($_POST['group']),
+		$airia->httpInputConvertEncoding($_POST['file']),
+		$contents
+	);
+	if(isset($_POST['scrollvalue'])){
+		$scrollQuery = "&scroll=".$_POST['scrollvalue'];
+	}else{
+		$scrollQuery = "";
+	}
+	
+	$resultJs = "alert('保存しました');history.back()";
+	
+	//ファイル名が無い場合、Airiaが自動生成するので、その値をフォームにセット
+	//if(!$_POST['file']){
+	//	$resultJs = "parent.document.editorform.file.value='".$airia->getFileName()."';\n" . $resultJs ;
+	//}
+	
+	break;
 case "delete":
 	if($_POST['file']){
 		$airia->deleteFile(
