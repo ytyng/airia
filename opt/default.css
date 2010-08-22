@@ -1,0 +1,78 @@
+a{
+	text-decoration:none;
+}
+a:hover{
+	text-decoration:underline;
+}
+
+body#menu{
+	margin:0;
+	padding:0;
+	background:#eee;
+}
+
+body#menu h1{
+	margin:0;
+	padding:5px;
+	background:#007;
+	color:#fff;
+	font-size:100%;
+}
+
+body#menu h1 a{
+	color:#fff;
+}
+
+
+body#menu ul{
+	margin:5px;
+	padding:2px;
+	font-size:75%;
+	list-style-type:none;
+}
+
+body#menu ul#group{
+	padding:5px;
+	border:1px solid #777;
+	background:#ddd;
+}
+
+body#menu li.selected{
+	background:#ffd;
+	font-weight:bold;
+}
+
+body#editor{
+	margin:0;
+	padding:0;
+	background:#ddd;
+	
+}
+body#editor form{
+	margin:0;
+	padding:0;
+}
+body#editor table#layoutgrid{
+	margin:0;
+	padding:0;
+	width:100%;
+	height:100%;
+}
+body#editor td{
+	margin:0;
+	padding:0;
+}
+
+body#editor textarea{
+	width:100%;
+	height:100%;
+	padding:5px;
+	font-size:85%;
+}
+
+body#editor #indicator{
+	width:20px;
+	font-weight:bold;
+	color:#700;
+	text-align:center;
+}

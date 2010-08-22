@@ -1,0 +1,179 @@
+body{
+	width:100%;
+	margin:0;
+	padding:0;
+	font-size:100%;
+	word-wrap:break-word;
+	word-break:break-all;
+}
+
+a{
+	color:#000;
+	text-decoration:none;
+}
+a:hover{
+	text-decoration:underline;
+}
+
+
+h2{
+	margin:0;
+	padding:0.5em 0 0.5em 1em;
+	font-size:100%;
+	color:#777;
+}
+h2 a{
+	color:#777;
+}
+h3{
+	margin:0;
+	padding:0.2em;
+	background:#556;
+	color:#fff;
+	font-size:100%;
+	text-align:center;
+}
+
+
+
+table#listTable{
+	width:100%;
+	border-collapse:collapse;
+}
+table#listTable tr{
+	border:solid #777;
+	border-width:0 0 1px 0;
+}
+table#listTable tr.color0{
+	background:#eee;
+}
+table#listTable tr.color1{
+	background:#ddd;
+}
+table#listTable td{
+	padding:1em;
+}
+table#listTable td.nexticon{
+	padding:1em 0.5em;
+	width:10%;
+	font-weight:bold;
+	color:#777;
+}
+
+
+div#footer{
+	width:100%;
+	text-align:right;
+	color:#eee;
+	background:#aaa;
+}
+div#footer a{
+	color:#eee;
+}
+
+/*
+============================================================
+viewer
+------------------------------------------------------------
+*/
+body#viewer{
+	background:#ddd;
+}
+body#viewer h2{
+	margin:0.5em 0 0 0.5em;
+	padding:0;
+	font-size:100%;
+	color:#000;
+}
+
+body#viewer div.editorLinkArea{
+	padding:0.5em 0;
+	text-align:center;
+}
+body#viewer button.editorLink{
+	margin:0;
+	padding-left:0;
+	padding-right:0;
+	width:93%;
+	font-size:100%;
+}
+
+body#viewer p#viewerContent{
+	width:96%;
+	margin:0;
+	padding:2%;
+	line-height:1.5em;
+	background:#fff;
+	border:solid #777;
+	border-width:1px 0 1px 0;
+}
+
+body#viewer p#viewerContent a{
+	color:#007;
+	text-decoration:underline;
+}
+
+
+/*
+============================================================
+editor
+------------------------------------------------------------
+*/
+body#editor{
+	width:100%;
+	height:100%;
+	overflow:hidden;
+	background:#ddd;
+	}
+table#editorTable{
+	width:100%;
+	height:100%;
+	border-collapse:collapse;
+	background:#ddd;
+}
+table#editorTable tr.form1L{
+	height:1.5em;
+}
+table#editorTable td.small{
+	width:25%;
+	text-align:right;
+	padding-right:0.5em;
+}
+
+table#editorTable td.small2{
+	width:15%;
+	text-align:right;
+	padding-right:0.5em;
+}
+
+form#editorform{
+}
+
+form#editorform input[type='text']{
+	width:100%;
+	font-size:110%;
+}
+
+form#editorform input[type='submit']{
+	font-size:110%;
+}
+form#editorform input[type='button']{
+	font-size:110%;
+}
+form#editorform textarea{
+	width:100%;
+	height:100%;
+	min-height:300px;
+	font-size:100%;
+}
+
+iframe#submitFrame{
+	width:1em;
+	height:1em;
+	position:absolute;
+	top:0;
+	left:0;
+	z-index:-1;
+	border:none;
+}
+
