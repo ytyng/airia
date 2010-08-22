@@ -28,8 +28,6 @@ case "save":
 		$scrollQuery = "";
 	}
 	
-	
-	
 	$resultJs = "alert('保存しました');";
 	
 	//ファイル名が無い場合、Airiaが自動生成するので、その値をフォームにセット
@@ -42,8 +40,8 @@ case "save":
 case "save-part":
 	//追記保存
 		
-	$airia->setGroup($airia->httpInputConvertEncoding($_GET['group']));
-	$airia->readFile($airia->httpInputConvertEncoding($_GET['file']));
+	$airia->setGroup($airia->httpInputConvertEncoding($_POST['group']));
+	$airia->readFile($airia->httpInputConvertEncoding($_POST['file']));
 	$contents = $airia->getFileContents();
 		
 	if($_POST['position']=="head"){
@@ -62,7 +60,7 @@ case "save-part":
 		$scrollQuery = "";
 	}
 	
-	$resultJs = "alert('保存しました');history.back()";
+	$resultJs = "alert('追記しました');parent.history.back()";
 	
 	//ファイル名が無い場合、Airiaが自動生成するので、その値をフォームにセット
 	//if(!$_POST['file']){

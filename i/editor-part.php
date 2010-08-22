@@ -35,44 +35,43 @@ header("Pragma: no-cache");?>
 </head>
 <body id="editor">
 <form id="editorform" name="editorform" action="write.php" method="post" target="submitFrame">
+
 <table id="editorTable" >
 <tr class="form1L">
 <td class="small">グループ</td>
 <td>
 <input type="text" name="group" value="<?php echo htmlspecialchars($airia->getGroup());?>" title="グループ(ディレクトリ)" />
 </td>
-<td class="small2">
-</td>
 
-<tr class="form1L">
-<td colspan="2">
-追記位置:
-<input type="radio" name="position" value="head" checked="checked" />文頭
-<input type="radio" name="position" value="tail" />文末
-
-</td>
-</tr>
 
 <tr class="form1L">
 <td class="small">ファイル</td>
 <td>
 <input type="text" name="file" value="<?php echo htmlspecialchars($airia->getFileName());?>" title="ファイル名" />
 </td>
-<td class="small2">
-<input type="submit" value="保存" title="ファイルの保存" />
+</tr>
+
+<tr class="form1L">
+<td class="small">追記位置</td>
+<td>
+<input type="radio" name="position" value="head" checked="checked" id="radio-position-head" />
+<label for="radio-position-head">文頭</label>
+<input type="radio" name="position" value="tail" id="radio-position-tail" />
+<label for="radio-position-tail">文末</label>
+</td>
+</tr>
+
+<tr>
+<td colspan="2">
+<textarea name="contents" style="height:200px;"></textarea>
+</td>
+</tr>
+
+<tr>
+<td colspan="2" style="text-align:center;">
 <input type="hidden" name="mode" value="save-part" />
 <input type="hidden" name="scrollvalue" value="" />
-</td>
-</tr>
-<!--
-<td id="indicator">
-</td>
-<tr class="form1L">
-</tr>
--->
-<tr>
-<td colspan="3">
-<textarea name="contents-part" ></textarea>
+<input type="submit" value="保存" title="ファイルの保存" style="width:50%;"/>
 </td>
 </tr>
 </table>

@@ -22,6 +22,7 @@ $pageTitle = htmlspecialchars($airia->getGroup()) ." ". htmlspecialchars($airia-
 
 
 $editorUrl = "editor.php?group=".rawurlencode($airia->getGroup())."&file=".rawurlencode($airia->getFileName());
+$editorUrlPart = "editor-part.php?group=".rawurlencode($airia->getGroup())."&file=".rawurlencode($airia->getFileName());
 
 header("Content-Type: text/html; charset=".BASE_ENCODING);
 header("Cache-Control: no-cache, must-revalidate");
@@ -44,7 +45,8 @@ header("Pragma: no-cache");
 <?php echo htmlspecialchars($airia->getFileName());?>
 </h2>
 <div class="editorLinkArea">
-<button class="editorLink" onClick="location.href='<?php echo $editorUrl; ?>'">編集する</button>
+<button class="editorLink" onClick="location.href='<?php echo $editorUrlPart; ?>'">追記する</button>
+<button class="editorLink" onClick="location.href='<?php echo $editorUrl; ?>'">編集する</button> 
 </div>
 <p id="viewerContent">
 <?php
@@ -60,7 +62,8 @@ if(
 ?>
 </p>
 <div class="editorLinkArea">
-<button class="editorLink" onClick="location.href='<?php echo $editorUrl; ?>'">編集する</button>
+<button class="editorLink" onClick="location.href='<?php echo $editorUrlPart; ?>'">追記する</button>
+<button class="editorLink" onClick="location.href='<?php echo $editorUrl; ?>'">編集する</button> 
 </div>
 <div id="footer">
 <a href="./" target="_parent"><?php echo $CONFIG['appricationTitle']; ?></a>
