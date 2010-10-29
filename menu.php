@@ -40,6 +40,13 @@ function updateTitle(title){
 <body id="menu">
 <h1><a href="./" target="_parent"><?php echo $CONFIG['appricationTitle']; ?></a></h1>
 
+<?php if($CONFIG['grepEnable']): ?>
+	<form class="grepform" method="get" target="frame_editor" action="./grep.php">
+	<input type="text" name="q" />
+	<input type="submit" value="Grep" />
+	</form>
+<?php endif; ?>
+
 <ul id="group">
 <li><a target="_self" href="menu.php" onClick="setGroup('');" ><?php echo $CONFIG['defaultGroup']; ?></a></li>
 

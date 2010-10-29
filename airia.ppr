@@ -3,7 +3,7 @@
 		auth.php<U>
 		.htaccess
 		config.php<U>
-	<include\
+	include\
 		.htaccess
 		Airia.class.php<U>
 		Auth.utility.php<U>
@@ -13,7 +13,7 @@
 		m.css<U>
 	<data\
 		.htaccess
-	<opt\
+	opt\
 		default.js<U>
 		default.css
 		tabtextarea.js
@@ -30,7 +30,7 @@
 	version.txt<U>
 	data-default\
 		.htaccess
-	i\
+	<i\
 		filelist.php<U>
 		editor.php<U>
 		index.php<U>
@@ -38,3 +38,4 @@
 		i.css
 		viewer.php<U>
 		.htaccess<U>
+	grep.php<U>

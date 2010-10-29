@@ -317,5 +317,56 @@ class Airia{
 	function addTextAfterContent($s){
 		$this->fileContents .= $s;
 	}
+	
+	
+	
+	/**
+	 * Grepする
+	 */
+	function grep($query){
+		
+		$query = preg_replace('/[\"\'\;\>\<\|]+/',' ',$query);
+		
+		//$datadir = $this->CONFIG['dataDir'];
+		
+		chdir($this->CONFIG['dataDir']);
+		$command = "grep -Rn \"{$query}\" .";
+		$output = shell_exec($command);
+		
+		$result_list = explode("\n", $output);
+		
+		$buffer = array();
+		foreach($result_list as $result_line){
+			
+			$result_cells = explode(':', $result_line, 3);
+			
+			$dir_parts = explode('/', $result_cells[0]);
+			if(count($dir_parts) <= 1){
+				continue;
+			}elseif(count($dir_parts) <= 2){
+				//グループなし
+				$group = '';
+				$file  = $dir_parts[1];
+			}else{
+				$group = $dir_parts[1];
+				$file  = $dir_parts[2];
+			}
+			
+			$href = "./index.php?file=".rawurlencode($file)."&group=".rawurlencode($group);
+			
+			$record = array(
+				'group' => $group,
+				'file'  => $file,
+				'line'  => $result_cells[1],
+				'text'  => $result_cells[2],
+				'href'  => $href,
+			);
+			$buffer[] = $record;
+			
+		}
+		
+		return $buffer;
+		
+	}
 }
 ?>

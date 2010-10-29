@@ -47,6 +47,10 @@ $CONFIG = array(
 	
 	//▼デフォルトグループ文字列
 	'defaultGroup' => '(DEFAULT)',
+	
+	//▼grep有効
+	'grepEnable' => true,
+	
 );
 ?><?php
 

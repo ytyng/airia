@@ -42,6 +42,14 @@ body#menu li.selected{
 	font-weight:bold;
 }
 
+body#menu form.grepform{
+	margin:5px;
+}
+body#menu form.grepform input{
+	margin:0;
+}
+
+
 body#editor{
 	margin:0;
 	padding:0;
@@ -75,4 +83,9 @@ body#editor #indicator{
 	font-weight:bold;
 	color:#700;
 	text-align:center;
+}
+
+
+body#grep p{
+	font-size:80%;
 }
