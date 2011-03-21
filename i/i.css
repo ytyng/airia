@@ -53,6 +53,12 @@ table#listTable tr.color1{
 table#listTable td{
 	padding:1em;
 }
+table#listTable td.header{
+	padding:1em;
+	background:#444;
+	color:#fff;
+	font-weight:bold;
+}
 table#listTable td.nexticon{
 	padding:1em 0.5em;
 	width:10%;
@@ -69,6 +75,32 @@ div#footer{
 }
 div#footer a{
 	color:#eee;
+}
+
+/*
+============================================================
+grepForm
+------------------------------------------------------------
+*/
+
+form.grepForm{
+	margin:0;
+	width:100%;
+}
+
+form.grepForm input{
+	padding:0.5em;
+}
+form.grepForm input[type="text"]{
+	width:70%;
+}
+form.grepForm input[type="submit"]{
+	width:20%;
+}
+
+p.grepped-text{
+	font-size:80%;
+	color:#777;
 }
 
 /*

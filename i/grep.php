@@ -7,6 +7,7 @@ q=文字列
 	検索クエリ
 */
 
+chdir("../");
 
 
 require("config/config.php");
@@ -28,7 +29,6 @@ if(!isset($_GET['q'])){
 }
 
 $q = $_GET['q'];
-
 $findResult = $airia->find($q);
 $grepResult = $airia->grep($q);
 
@@ -38,6 +38,8 @@ header("Pragma: no-cache");
 
 
 $pageTitle = "grep ".htmlspecialchars($q);
+
+$colorId=0;
 ?>
 <html lang="ja">
 <head>
@@ -45,31 +47,38 @@ $pageTitle = "grep ".htmlspecialchars($q);
 <meta http-equiv="Cache-Control" content="no-cache" />
 <meta http-equiv="Pragma" content="no-cache" />
 <meta http-equiv="Expires" content="0" />
-<link rel="stylesheet" type="text/css" href="opt/default.css" />
+<meta name="viewport" content="width=320,user-scalable=no,maximum-scale=1" />
+<link rel="stylesheet" type="text/css" href="i.css" />
 <link rel="shortcut icon" href="opt/favicon.ico" />
 <title><?php echo $pageTitle; ?></title>
 
 </head>
 <body id="grep">
-<h2>find result</h2>
-<?php foreach( $findResult as $record): ?>
+<table id="listTable"><tbody>
+<tr><td class="header">find result</td></tr>
 
-	<a href="<?php echo $record['href']; ?>" target="_parent">
-	<?php echo htmlspecialchars($record['group']); ?>/<?php echo htmlspecialchars($record['file']); ?></a>
-	<br />
-		
+<?php foreach( $findResult as $record): ?>
+	<tr onClick="location.href='<?php echo $record['mobileHref']; ?>';" class="color<?php echo $colorId++%2; ?>">
+	<td>
+	<a href="<?php echo $record['mobileHref']; ?>" target="_parent">
+	<?php echo htmlspecialchars($record['group']); ?>/<br />
+	<?php echo htmlspecialchars($record['file']); ?></a>
+	</td>
+	</tr>
 <?php endforeach; ?>
 
-<h2>grep result</h2>
+<tr><td class="header">grep result</td></tr>
 <?php foreach( $grepResult as $record): ?>
-
-	<a href="<?php echo $record['href']; ?>" target="_parent">
-	<?php echo htmlspecialchars($record['group']); ?>/<?php echo htmlspecialchars($record['file']); ?></a>
+	<tr onClick="location.href='<?php echo $record['mobileHref']; ?>';" class="color<?php echo $colorId++%2; ?>">
+	<td>
+	<a href="<?php echo $record['mobileHref']; ?>" target="_parent">
+	<?php echo htmlspecialchars($record['group']); ?>/<br />
+	<?php echo htmlspecialchars($record['file']); ?></a>
 	<small>(<?php echo htmlspecialchars($record['line']); ?>)</small>
 	<br />
-	<p><?php echo htmlspecialchars($record['text']); ?></p>
-	
-	<hr />
+	<p class="grepped-text"><?php echo htmlspecialchars($record['text']); ?></p>
+	</td>
+	</tr>
 		
 <?php endforeach; ?>
 </body>

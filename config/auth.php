@@ -47,7 +47,12 @@ session_cache_expire(30*24*60);
 session_cache_limiter('private');
 session_start();
 
-if(!$_SESSION['common']['login']){
+//if(!$_SESSION['common']['login']){
+if(
+	!isset($_SESSION['common']) ||
+	!isset($_SESSION['common']['login']) ||
+	!$_SESSION['common']['login']
+){
 	header('Location: /personal/userManager/login.php?next=/personal/airia/');
 	die();
 }

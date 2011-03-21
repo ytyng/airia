@@ -43,7 +43,7 @@ function updateTitle(title){
 <?php if($CONFIG['grepEnable']): ?>
 	<form class="grepform" method="get" target="frame_editor" action="./grep.php">
 	<input type="text" name="q" />
-	<input type="submit" value="Grep" />
+	<input type="submit" value="検索" />
 	</form>
 <?php endif; ?>
 

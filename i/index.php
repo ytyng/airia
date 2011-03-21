@@ -30,6 +30,12 @@ header("Pragma: no-cache");
 <title><?php echo $CONFIG['appricationTitle']; ?></title>
 </head>
 <body>
+<?php if($CONFIG['grepEnable']): ?>
+	<form class="grepform" method="get" action="./grep.php">
+	<input type="text" name="q" />
+	<input type="submit" value="Search" />
+	</form>
+<?php endif; ?>
 <h3>グループ選択</h3>
 <table id="listTable"><tbody>
 <tr onClick="location.href='editor.php';" class="color<?php echo $colorId++%2; ?>">

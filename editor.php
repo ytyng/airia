@@ -146,7 +146,7 @@ if(isset($_GET['scroll']) && $_GET['scroll']){
 <td colspan="3">
 <textarea
 	name="contents"
-	onKeydown='SetTab();setBgEditing();if(event.ctrlKey){return(executeShortcut(event.keyCode));}'
+	onKeydown='SetTab();setBgEditing();if(event.ctrlKey||event.metaKey){return(executeShortcut(event.keyCode));}'
 	onKeypress='SetTab2(event);'
 ><?php echo htmlspecialchars($airia->getFileContents()); ?></textarea>
 </td>

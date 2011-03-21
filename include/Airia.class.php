@@ -319,6 +319,49 @@ class Airia{
 	}
 	
 	
+	/**
+	 * Findする
+	 */
+	function find($query){
+		$query = preg_replace('/[\"\'\;\>\<\|\*]+/',' ',$query);
+		$oldDir = getcwd();
+		chdir($this->CONFIG['dataDir']);
+		$command = "find . -type f -iname \"*{$query}*\"";
+		$output = shell_exec($command);
+		$result_list = explode("\n", $output);
+		$buffer = array();
+		foreach($result_list as $result_line){
+			
+			$dir_parts = explode('/', $result_line);
+			if(count($dir_parts) <= 1){
+				continue;
+			}elseif(count($dir_parts) <= 2){
+				//グループなし
+				$group = '';
+				$file  = $dir_parts[1];
+			}else{
+				$group = $dir_parts[1];
+				$file  = $dir_parts[2];
+			}
+			
+			$href = "./index.php?file=".rawurlencode($file)."&group=".rawurlencode($group);
+			$mobileHref = "./viewer.php?file=".rawurlencode($file)."&group=".rawurlencode($group);
+			
+			$record = array(
+				'group' => $group,
+				'file'  => $file,
+				'href'  => $href,
+				'mobileHref' => $mobileHref,
+			);
+			$buffer[] = $record;
+			
+		}
+		
+		chdir($oldDir);
+		
+		return $buffer;
+	}
+	
 	
 	/**
 	 * Grepする
@@ -328,7 +371,7 @@ class Airia{
 		$query = preg_replace('/[\"\'\;\>\<\|]+/',' ',$query);
 		
 		//$datadir = $this->CONFIG['dataDir'];
-		
+		$oldDir = getcwd();
 		chdir($this->CONFIG['dataDir']);
 		$command = "grep -Rn \"{$query}\" .";
 		$output = shell_exec($command);
@@ -353,6 +396,7 @@ class Airia{
 			}
 			
 			$href = "./index.php?file=".rawurlencode($file)."&group=".rawurlencode($group);
+			$mobileHref = "./viewer.php?file=".rawurlencode($file)."&group=".rawurlencode($group);
 			
 			$record = array(
 				'group' => $group,
@@ -360,10 +404,13 @@ class Airia{
 				'line'  => $result_cells[1],
 				'text'  => $result_cells[2],
 				'href'  => $href,
+				'mobileHref' => $mobileHref,
 			);
 			$buffer[] = $record;
 			
 		}
+		
+		chdir($oldDir);
 		
 		return $buffer;
 		

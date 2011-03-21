@@ -30,7 +30,7 @@
 	version.txt<U>
 	data-default\
 		.htaccess
-	<i\
+	i\
 		filelist.php<U>
 		editor.php<U>
 		index.php<U>
@@ -38,4 +38,5 @@
 		i.css
 		viewer.php<U>
 		.htaccess<U>
+		grep.php<U>
 	grep.php<U>
