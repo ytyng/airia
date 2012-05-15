@@ -34,7 +34,7 @@ if(!isset($_GET['file']))       $_GET['file'] = "";
 if(!isset($_GET['reloadMenu'])) $_GET['reloadMenu'] = "";
 
 $menuReloadJs = "";
-
+$textareaResizeJs = "";
 
 switch($_POST['mode']){
 case "save":
@@ -96,6 +96,15 @@ if(isset($_GET['addAfter'])){
 
 $pageTitle = htmlspecialchars($airia->getGroup()) ." ". htmlspecialchars($airia->getFileName()) ." - ". $CONFIG['appricationTitle'];
 
+//モバイル機種ではテキストエリアサイズを調整
+/*
+if(strpos($_SERVER['HTTP_USER_AGENT'], 'Android') !== false){
+	$textareaResizeJs = "textAreaResizeAndroid();";
+}elseif(strpos($_SERVER['HTTP_USER_AGENT'], 'iPad') !== false){
+	$textareaResizeJs = "textAreaResizeAndroid();";
+}
+*/
+
 header("Content-Type: text/html; charset=".BASE_ENCODING);
 header("Cache-Control: no-cache, must-revalidate");
 header("Pragma: no-cache");
@@ -106,6 +115,7 @@ header("Pragma: no-cache");
 <meta http-equiv="Cache-Control" content="no-cache" />
 <meta http-equiv="Pragma" content="no-cache" />
 <meta http-equiv="Expires" content="0" />
+<meta name="viewport" content="width=device-width, maximum-scale=1.0, minimum-scale=1.0" />
 <link rel="stylesheet" type="text/css" href="opt/default.css" />
 <link rel="shortcut icon" href="opt/favicon.ico" />
 <title><?php echo $pageTitle; ?></title>
@@ -121,7 +131,7 @@ if(isset($_GET['scroll']) && $_GET['scroll']){
 ?>
 </script>
 </head>
-<body id="editor" onLoad="taScroll(scrollPosition);saveTaOldData();<?php echo $menuReloadJs; ?>">
+<body id="editor" onLoad="taScroll(scrollPosition);saveTaOldData();<?php echo $menuReloadJs; echo $textAreaResizeAndroid; ?>">
 <form id="editorform" name="editorform" action="editor.php" method="post" onSubmit="formOnSubmit();">
 <table id="layoutgrid" >
 <tr style="height:30px;">
@@ -146,6 +156,7 @@ if(isset($_GET['scroll']) && $_GET['scroll']){
 <td colspan="3">
 <textarea
 	name="contents"
+	id="ta-contents"
 	onKeydown='SetTab();setBgEditing();if(event.ctrlKey||event.metaKey){return(executeShortcut(event.keyCode));}'
 	onKeypress='SetTab2(event);'
 ><?php echo htmlspecialchars($airia->getFileContents()); ?></textarea>

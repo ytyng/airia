@@ -72,12 +72,8 @@ function delete_confirm(){
 <tr class="form1L">
 </tr>
 -->
-<tr>
-<td colspan="3">
-<textarea name="contents" ><?php echo htmlspecialchars($airia->getFileContents()); ?></textarea>
-</td>
-</tr>
 </table>
+<textarea name="contents" ><?php echo htmlspecialchars($airia->getFileContents()); ?></textarea>
 </form>
 <iframe name="submitFrame" id="submitFrame" src="about:blank"></iframe>
 </body>

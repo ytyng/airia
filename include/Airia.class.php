@@ -260,7 +260,7 @@ class Airia{
 		$text = nl2br($text);
 		$text = mbereg_replace(
 			'(https?)'."(://[[:alnum:]\+\$\;\?\.%,!#~*/:@&=_-]+)",
-			"<a href=\'\\1\\2\'>\\1\\2</a>",
+			"<a href=\"\\1\\2\">\\1\\2</a>",
 			$text
 		);
 		return $text;

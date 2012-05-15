@@ -64,3 +64,7 @@ function insertHr(){
 	document.editorform.contents.scrollTop=99999;
 }
 
+function textAreaResizeAndroid(){
+	ta = document.getElementById("ta-contents");
+	ta.style.height = "50%";
+}

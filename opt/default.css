@@ -54,7 +54,7 @@ body#editor{
 	margin:0;
 	padding:0;
 	background:#ddd;
-	
+	overflow:hidden;
 }
 body#editor form{
 	margin:0;
